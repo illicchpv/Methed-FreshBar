@@ -1,0 +1,34 @@
+METHED
+
+Интенсив - Freshy bar (18.07 — 21.07)
+	https://my.methed.ru/teach/control/stream/view/id/772813095
+
+по дням
+  https://my.methed.ru/teach/control/stream/view/id/772813095  
+
+Макет
+  https://www.figma.com/file/Eno8J2D2D9FPqLb27qiJLO/Freshy-Bar-(Intensive)-(Copy)?node-id=0%3A1&mode=dev
+	//https://www.figma.com/file/4JGrMCleZrKPnSEkvrWgH5/Freshy-Bar-(Intensive)?node-id=101%3A2&mode=dev
+
+
+https://www.youtube.com/watch?v=Uy2li11PXC8&t=353s
+	plagins
+image preview
+HTMLhint
+BEM Helper
+babel javascript
+code runner
+
+https://my.methed.ru/teach/control/lesson/view/id/295210885
+
+
+закончил тут
+https://www.youtube.com/watch?v=4cxsGc7F2s4&t=1s
+// https://www.youtube.com/watch?v=rGLZCxoiVJE&t=3s
+// https://www.youtube.com/watch?v=SslAhPh4Zlk&t=284s
+
+main
+	section
+
+1180
+
