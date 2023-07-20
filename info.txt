@@ -34,3 +34,14 @@ main
 
 1180
 
+=============================================
+api
+
+glitch.com/api/goods/sunset-mica-decimal
+
+https://sunset-mica-decimal.glitch.me
+get
+https://sunset-mica-decimal.glitch.me/api/goods
+https://sunset-mica-decimal.glitch.me/img/(filename) ???
+post
+https://sunset-mica-decimal.glitch.me/api/order
