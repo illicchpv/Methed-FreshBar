@@ -24,16 +24,6 @@ code runner
 https://my.methed.ru/teach/control/lesson/view/id/295210885
 
 
-закончил тут
-https://www.youtube.com/watch?v=4cxsGc7F2s4&t=1s
-// https://www.youtube.com/watch?v=rGLZCxoiVJE&t=3s
-// https://www.youtube.com/watch?v=SslAhPh4Zlk&t=284s
-
-main
-	section
-
-1180
-
 =============================================
 api
 
