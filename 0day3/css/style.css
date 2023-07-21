@@ -33,7 +33,6 @@
 
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 *,
@@ -310,7 +309,3 @@ fieldset {
 }
 
 /* .footer__developer-link {} */
-
-.temp{
-  scroll-behavior: auto;
-}

@@ -42,30 +42,6 @@ const createCard = (item) => {
   return cocktail;
 }
 
-const scrollService = {
-  scrollPosition: 0,
-  desableScroll(){
-    this.scrollPosition = window.scrollY;
-    log('scrollPosition:', this.scrollPosition)
-    document.documentElement.style.scrollBehavior = 'auto'
-    document.body.style.cssText = `
-    overflow: hidden;
-    position: fixed;
-    top: -${this.scrollPosition}px;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    padding-right: ${window.innerWidth-document.body.offsetWidth}px;
-` // document.body.offsetWidth - ширина страницы(документа)
-  // window.innerWidth - ширина окна браузера
-  },
-  enableScroll(){
-    document.body.style.cssText = ''
-    window.scroll({top: this.scrollPosition})
-    document.documentElement.style.scrollBehavior = ''
-  },
-}
-
 const modalController = ({ modal, btnOpen, time = 300 }) => {
   const buttonEl = document.querySelector(btnOpen)
   const modalEl = document.querySelector(modal)
@@ -87,10 +63,7 @@ const modalController = ({ modal, btnOpen, time = 300 }) => {
     
     if(target === modalEl || code === 'Escape'){
       modalEl.style.opacity = 0
-      setTimeout(()=>{ 
-        modalEl.style.visibility = 'hidden' 
-        scrollService.enableScroll()
-      }, time)
+      setTimeout(()=>{ modalEl.style.visibility = 'hidden' }, time)
 
       window.removeEventListener('keydown', closeModal)
     }
@@ -100,7 +73,6 @@ const modalController = ({ modal, btnOpen, time = 300 }) => {
     modalEl.style.opacity = 1
 
     window.addEventListener('keydown', closeModal)
-    scrollService.desableScroll()
   }
   buttonEl.addEventListener('click', (e) => {
     openModal()
