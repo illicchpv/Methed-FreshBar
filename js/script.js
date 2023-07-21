@@ -111,9 +111,9 @@ const modalController = ({ modal, btnOpen, time = 300 }) => {
 
   return {openModal, closeModal}
 }
-
 const init = async () => {
   modalController({modal: '.modal_order', btnOpen: '.header__btn-order' })
+  modalController({modal: '.modal_make', btnOpen: '.cocktail_btn_make' })
   // const headerBtnOrder = document.querySelector('.header__btn-order')
   // headerBtnOrder.addEventListener('click', (e)=>{
 
