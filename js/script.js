@@ -1,5 +1,18 @@
 const API_URL = "https://pvis0api0fresh.glitch.me/" // "https://sunset-mica-decimal.glitch.me/"
 
+const price = {
+  Клубника: 60,
+  Киви: 55,
+  Банан: 50,
+  Маракуйя: 90,
+  Манго: 70,
+  Яблоко: 50,
+  Мята: 50,
+  Лед: 10,
+  Биоразлагаемый: 20,
+  Пластиковый: 0,
+}
+
 const log = console.log
 const error = console.error
 
@@ -13,7 +26,7 @@ const getData = async () => {
   } catch (err) {
     error(err)
   } finally {
-    log('finally')
+    //log('finally')
   }
 }
 
@@ -36,7 +49,7 @@ const createCard = (item) => {
       <p class="cocktail__size">${item.size}мл</p>
     </div>
 
-    <button class="btn cocktail_btn cocktail_btn_make" data-id="${item.id}">Добавить</button>
+    <button class="btn cocktail_btn cocktail_btn_add" data-id="${item.id}">Добавить</button>
   </div>
   `;
   return cocktail;
@@ -44,9 +57,9 @@ const createCard = (item) => {
 
 const scrollService = {
   scrollPosition: 0,
-  desableScroll(){
+  desableScroll() {
     this.scrollPosition = window.scrollY;
-    log('scrollPosition:', this.scrollPosition)
+    //log('scrollPosition:', this.scrollPosition)
     document.documentElement.style.scrollBehavior = 'auto'
     document.body.style.cssText = `
     overflow: hidden;
@@ -55,19 +68,19 @@ const scrollService = {
     left: 0;
     height: 100vh;
     width: 100vw;
-    padding-right: ${window.innerWidth-document.body.offsetWidth}px;
+    padding-right: ${window.innerWidth - document.body.offsetWidth}px;
 ` // document.body.offsetWidth - ширина страницы(документа)
-  // window.innerWidth - ширина окна браузера
+    // window.innerWidth - ширина окна браузера
   },
-  enableScroll(){
+  enableScroll() {
     document.body.style.cssText = ''
-    window.scroll({top: this.scrollPosition})
+    window.scroll({ top: this.scrollPosition })
     document.documentElement.style.scrollBehavior = ''
   },
 }
 
 const modalController = ({ modal, btnOpen, time = 300 }) => {
-  const buttonEl = document.querySelector(btnOpen)
+  const buttonEls = document.querySelectorAll(btnOpen)
   const modalEl = document.querySelector(modal)
   // modalEl.style.cssText = `
   // display:none;
@@ -84,11 +97,11 @@ const modalController = ({ modal, btnOpen, time = 300 }) => {
   const closeModal = (e) => {
     const target = e.target
     const code = e.code
-    
-    if(target === modalEl || code === 'Escape'){
+
+    if (target === modalEl || code === 'Escape') {
       modalEl.style.opacity = 0
-      setTimeout(()=>{ 
-        modalEl.style.visibility = 'hidden' 
+      setTimeout(() => {
+        modalEl.style.visibility = 'hidden'
         scrollService.enableScroll()
       }, time)
 
@@ -102,18 +115,82 @@ const modalController = ({ modal, btnOpen, time = 300 }) => {
     window.addEventListener('keydown', closeModal)
     scrollService.desableScroll()
   }
-  buttonEl.addEventListener('click', (e) => {
-    openModal()
+  buttonEls.forEach((buttonEl) => {
+    buttonEl.addEventListener('click', (e) => {
+      openModal()
+    })
   })
   modalEl.addEventListener('click', (e) => {
     closeModal(e)
   })
 
-  return {openModal, closeModal}
+  return { openModal, closeModal }
 }
+
+const getFormData = (form) => {
+  // log('form', form)
+  const formData = new FormData(form)
+  const data = {}
+  for(const [name, value] of formData.entries() ){
+    log('formData ', name, value)
+    if(data[name]){
+      if(!Array.isArray(data[name])){
+        data[name] = [data[name]]
+      }
+      data[name].push(value)
+    } else{
+      data[name] = value
+    }
+  }
+  return data
+}
+const calculateTotalPrice = (form, startPrice) => {
+  let totalPrice = startPrice
+  const data = getFormData(form)
+  log('calculateTotalPrice getFormData:', data)
+  if(Array.isArray(data.ingredients)){
+    data.ingredients.forEach(item => {
+      totalPrice += price[item] || 0
+    })
+  }else{
+    totalPrice += price[data.ingredients] || 0
+  }
+  if(Array.isArray(data.toping)){
+    data.toping.forEach(item => {
+      totalPrice += price[item] || 0
+    })
+  }else{
+    totalPrice += price[data.toping] || 0
+  }
+  totalPrice += price[data.cup] || 0
+  return totalPrice
+}
+
+const calculateMakeYoueOwn = () => {
+  const formMakeOwn = document.querySelector('.make__form_make-your-own') 
+  const makeInputPrice= formMakeOwn.querySelector('.make__input_price')
+  const makeTotalPrice  = formMakeOwn.querySelector('.make__total-price')
+
+  // log('formMakeOwn', formMakeOwn)
+  // log('makeInpumakeInputPricetPrice', makeInputPrice)
+  // log('makeInputPrice', makeInputPrice)
+
+  const handlerChange = () => {
+    const totalPrice = calculateTotalPrice(formMakeOwn, 150)
+    makeInputPrice.value = totalPrice
+    makeTotalPrice.textContent = `${totalPrice} ₽`
+  }
+
+  formMakeOwn.addEventListener('change', handlerChange)
+  handlerChange()
+}
+
 const init = async () => {
-  modalController({modal: '.modal_order', btnOpen: '.header__btn-order' })
-  modalController({modal: '.modal_make', btnOpen: '.cocktail_btn_make' })
+  modalController({ modal: '.modal_order', btnOpen: '.header__btn-order' })
+
+  calculateMakeYoueOwn()
+
+  modalController({ modal: '.modal_make-your-own', btnOpen: '.cocktail_btn_make' })
   // const headerBtnOrder = document.querySelector('.header__btn-order')
   // headerBtnOrder.addEventListener('click', (e)=>{
 
@@ -121,9 +198,9 @@ const init = async () => {
   // })
 
   const goodsListEl = document.querySelector('.goods__list')
-  log('goodsListEl:', goodsListEl)
+  //log('goodsListEl:', goodsListEl)
   const data = await getData()
-  log('data:', data)
+  //log('data:', data)
 
   const cardsCocktail = data.map((item) => {
     const li = document.createElement('li')
@@ -133,6 +210,9 @@ const init = async () => {
     return li
   })
   goodsListEl.append(...cardsCocktail)
+
+  modalController({ modal: '.modal_add', btnOpen: '.cocktail_btn_add' })
+
 }
 
 init()
