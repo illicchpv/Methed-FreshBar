@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <title>Fresh Bar</title>
 
-  <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/mulish-v12-cyrillic_latin-900.woff2" as="font" type="font/woff2" crossorigin> -->
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
@@ -21,7 +22,7 @@
 <body>
   <header class="header" style="display: -none;">
     <div class="container header__container">
-      <img class="header__logo" src="img/logo.svg" alt="лого">
+      <img class="header__logo" src="img/logo.svg" alt="лого" onError="this.src=this.src.replace('/img/', '/../img/');">
       <div class="header__btns">
         <button class="header__btn-order">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,15 +49,18 @@
 
         <div class="hero__cups">
           <div class="hero__cup hero__cup_pink">
-            <img class="hero__img" class src="img/pink.png" alt="стакан с розовым">
+            <img class="hero__img" class src="img/pink.png" alt="стакан с розовым"
+              onError="this.src=this.src.replace('/img/', '/../img/');">
           </div>
 
           <div class="hero__cup hero__cup_orange">
-            <img class="hero__img" src="img/green.png" alt="стакан с зелёным">
+            <img class="hero__img" src="img/green.png" alt="стакан с зелёным"
+              onError="this.src=this.src.replace('/img/', '/../img/');">
           </div>
 
           <div class="hero__cup hero__cup_green">
-            <img class="hero__img" src="img/orange.png" alt="стакан с оранжевым">
+            <img class="hero__img" src="img/orange.png" alt="стакан с оранжевым"
+              onError="this.src=this.src.replace('/img/', '/../img/');">
           </div>
         </div>
       </div>
@@ -70,12 +74,13 @@
           <!-- 1 -->
           <li class="goods__item">
             <article class="goods__card cocktail">
-              <img class="cocktail__img" src="img/make-your-own.jpg" alt="коктейл соберись сам">
+              <img class="cocktail__img" src="img/make-your-own.jpg" alt="коктейл соберись сам"
+                onError="this.src=this.src.replace('/img/', '/../img/');">
 
               <div class="cocktail__content">
                 <div class="cocktail__text">
                   <h3 class="cocktail__title">
-                    Собери сам 
+                    Собери сам
                   </h3>
 
                   <p class="cocktail__price text-red">260 ₽</p>
@@ -95,7 +100,7 @@
   <!-- footer -->
   <footer class="footer" style="display: -none;">
     <div class="container footer__container">
-      <img class="footer__logo" src="img/logo.svg" alt="лого">
+      <img class="footer__logo" src="img/logo.svg" alt="лого" onError="this.src=this.src.replace('/img/', '/../img/');">
 
       <p class="footer__copyright"> © Freshy Bar, 2023</p>
 
@@ -116,12 +121,12 @@
     <div class="modal__main modal__main_order" сс="внутренность">
       <div class="order">
         <h2 class="order__title">
-          Корзина<sup 
-          class="text-red order__count">(2)</sup>
+          Корзина<sup class="text-red order__count">(2)</sup>
         </h2>
         <ul class="order__list">
           <li class="order__item">
-            <img class="order__img" src="img/lime-and-mint.jpg" alt="изображение">
+            <img class="order__img" src="img/lime-and-mint.jpg" alt="изображение"
+              onError="this.src=this.src.replace('/img/', '/../img/');">
             <div class="order__info">
               <h3 class="order__name">Манго смузи</h3>
 
@@ -140,7 +145,8 @@
           </li>
 
           <li class="order__item">
-            <img class="order__img" src="img/orange.png" alt="изображение">
+            <img class="order__img" src="img/orange.png" alt="изображение"
+              onError="this.src=this.src.replace('/img/', '/../img/');">
             <div class="order__info">
               <h3 class="order__name">Конструктор: Банан, яблоко, киви</h3>
 
@@ -156,13 +162,13 @@
 
           </li>
         </ul>
-        
+
         <div class="order__price">
           <p class="order__price-title">Итого:</p>
           <p class="order__total_price text-red">950&nbsp;₽</p>
         </div>
 
-        <form class="order__form" >
+        <form class="order__form">
           <label class="order__label" for="">
             <input class="order__input" type="text" placeholder="Ваше имя">
           </label>
@@ -182,38 +188,32 @@
     <div class="modal__main modal__main_make" сс="внутренность">
       <div class="make">
         <h3 class="make__title">
-          Собери <span class="text-red">свой</span>  смузи
+          Собери <span class="text-red">свой</span> смузи
         </h3>
         <form class="make__form">
           <fieldset class="make__fieldset make__fieldset_ingredients">
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="клубника"
-              >клубника
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="клубника">клубника
             </label>
-            
+
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="Киви"
-              >Киви
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="Киви">Киви
             </label>
-            
+
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="Банан"
-              >Банан
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="Банан">Банан
             </label>
-            
+
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="Маракуйя"
-              >Маракуйя
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="Маракуйя">Маракуйя
             </label>
-            
+
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="Манго"
-              >Манго
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="Манго">Манго
             </label>
-            
+
             <label class="make__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="ingredients" value="Яблоко"
-              >Яблоко
+              <input class="checkbox__input" type="checkbox" name="ingredients" value="Яблоко">Яблоко
             </label>
           </fieldset>
 
@@ -221,29 +221,25 @@
             <fieldset class="make__fieldset make__fieldset_toping">
               <legend class="make__legend">Дополнительно:</legend>
               <label class="make__label checkbox">
-                <input class="checkbox__input" type="checkbox" name="toping" value="Мята"
-                >Мята 
+                <input class="checkbox__input" type="checkbox" name="toping" value="Мята">Мята
                 <span class="make__upsale">(+50 ₽)</span>
               </label>
-              
+
               <label class="make__label checkbox">
-                <input class="checkbox__input" type="checkbox" name="toping" value="Лед"
-                >Лед 
+                <input class="checkbox__input" type="checkbox" name="toping" value="Лед">Лед
                 <span class="make__upsale">(+10 ₽)</span>
               </label>
             </fieldset>
-  
+
             <fieldset class="make__fieldset make__fieldset_cup">
               <legend class="make__legend">Стакан:</legend>
               <label class="make__label radio">
-                <input class="radio__input" type="radio" name="cup" value="Биоразлагаемый"
-                >Биоразлагаемый
+                <input class="radio__input" type="radio" name="cup" value="Биоразлагаемый">Биоразлагаемый
                 <span class="make__upsale">(+20 ₽) </span>
               </label>
-              
+
               <label class="make__label radio">
-                <input class="radio__input" type="radio" name="cup" value="Пластиковый"
-                >Пластиковый
+                <input class="radio__input" type="radio" name="cup" value="Пластиковый">Пластиковый
                 <span class="make__upsale">(+0 ₽)</span>
               </label>
             </fieldset>

@@ -83,7 +83,7 @@
   grid-area: delete;
   width: 24px;
   height: 24px;
-  background-image: url(../img/delete.svg);
+  background-image: url(../img/delete.svg), url(../../img/delete.svg);
   justify-self: end;
 }
 .order__item-price{
@@ -236,7 +236,7 @@
   transform: translate(-50%, -50%);
   width: 12px;
   height: 15px;
-  background-image: url(../img/check.svg);
+  background-image: url(../img/check.svg), url(../../img/check.svg);
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;

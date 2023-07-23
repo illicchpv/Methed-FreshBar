@@ -1,6 +1,6 @@
 @media (max-width:1240px) {
   body {
-    background-image: url(../img/bg-laptop.svg);
+    background-image: url(../img/bg-laptop.svg), url(../../img/bg-laptop.svg);
   }
 
   .container {
@@ -33,7 +33,7 @@
 }
 @media (max-width:940px){
   body {
-    background-image: url(../img/bg-tablet.svg);
+    background-image: url(../img/bg-tablet.svg), url(../../img/bg-tablet.svg);
     font-size: 14px;
   }
 
@@ -119,7 +119,7 @@
 
 @media (max-width:640px){
   body {
-    background-image: url(../img/bg-mobile.svg);
+    background-image: url(../img/bg-mobile.svg), url(../img/bg-mobile.svg);
     font-size: 14px;
   }
 
